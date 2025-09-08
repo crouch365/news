@@ -1,4 +1,4 @@
-import NewsList from "../../components/NewsList/NewsList";
+import NewsList from "../NewsList/NewsList";
 import styles from "./styles.module.css";
 import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constants";
 import NewsFilters from "../NewsFilters/NewsFilters";
@@ -7,6 +7,7 @@ import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { getApiNews } from "../../api/getApiNews";
 import { useFetch } from "../../helpers/hooks/useFetch";
 import PaginationWrapper from "../PaginationWrapper/PaginationWrapper";
+import type { NewsApiResponse, ParamsType } from "../../inrefaces/interfaces";
 
 const NewsByFilters = () => {
   const { filters, changeFilters } = useFilters({
@@ -18,10 +19,13 @@ const NewsByFilters = () => {
 
   const debounceKeyword = useDebounce(filters.keywords, 1500);
 
-  const { data, isLoading } = useFetch(getApiNews, {
-    ...filters,
-    keywords: debounceKeyword,
-  });
+  const { data, isLoading } = useFetch<NewsApiResponse, ParamsType>(
+    getApiNews,
+    {
+      ...filters,
+      keywords: debounceKeyword,
+    }
+  );
 
   const handNextPage = () => {
     if (filters.page_number < 10) {
@@ -35,7 +39,7 @@ const NewsByFilters = () => {
     }
   };
 
-  const handPageClick = (pageNumber) => {
+  const handPageClick = (pageNumber: number) => {
     changeFilters("page_number", pageNumber);
   };
   return (

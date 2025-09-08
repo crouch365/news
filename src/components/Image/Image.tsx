@@ -1,6 +1,10 @@
 import styles from "./styles.module.css";
 
-const Image = ({ image }) => {
+interface IProps {
+  image: string;
+}
+
+const Image = ({ image }: IProps) => {
   return (
     <div className={styles.banner}>
       {image ? (

@@ -1,6 +1,17 @@
+import type { DirectionType, SkeletonType } from "../../inrefaces/interfaces";
 import styles from "./styles.module.css";
 
-const Skeleton = ({ count = 1, type = "banner", direction = "column" }) => {
+interface IProps {
+  type: SkeletonType;
+  direction: DirectionType;
+  count: number;
+}
+
+const Skeleton = ({
+  count = 1,
+  type = "banner",
+  direction = "column",
+}: IProps) => {
   return (
     <>
       {count > 1 ? (
