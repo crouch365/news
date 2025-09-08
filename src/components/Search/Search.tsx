@@ -1,6 +1,11 @@
 import styles from "./styles.module.css";
 
-const Search = ({ keywords, setKeywords }) => {
+interface IProps {
+  keywords: string;
+  setKeywords: (keywords: string) => void;
+}
+
+const Search = ({ keywords, setKeywords }: IProps) => {
   return (
     <div className={styles.search}>
       <input

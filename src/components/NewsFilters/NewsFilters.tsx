@@ -4,9 +4,20 @@ import { getCategories } from "../../api/getApiNews";
 import Search from "../Search/Search";
 import Categories from "../Categories/Categories";
 import Slider from "../Slider/Slider";
+import type {
+  CategoriesApiResponse,
+  IFilters,
+} from "../../inrefaces/interfaces";
 
-const NewsFilters = ({ filters, changeFilters }) => {
-  const { data: dataCategories } = useFetch(getCategories);
+interface IProps {
+  filters: IFilters;
+  changeFilters: (key: string, value: string | null | number) => void;
+}
+
+const NewsFilters = ({ filters, changeFilters }: IProps) => {
+  const { data: dataCategories } = useFetch<CategoriesApiResponse, null>(
+    getCategories
+  );
 
   return (
     <div className={styles.filters}>
