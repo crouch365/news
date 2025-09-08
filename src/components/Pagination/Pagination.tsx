@@ -1,12 +1,13 @@
+import type { IPaginationProps } from "../../inrefaces/interfaces";
 import styles from "./styles.module.css";
 
 const Pagination = ({
   totalPages,
-  handNextPage,
   handPreviousPage,
+  handNextPage,
   handPageClick,
   currentPage,
-}) => {
+}: IPaginationProps) => {
   return (
     <div className={styles.pagination}>
       <button
