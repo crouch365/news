@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styles from "./styles.module.css";
+import { useTheme } from "../../context/ThemeContext";
 
 interface IProps {
   children: React.ReactElement;
@@ -18,9 +19,10 @@ const Slider = ({ children, step = 150 }: IProps) => {
 
     sliderRef.current.scrollLeft += step;
   };
+  const { isDark } = useTheme();
 
   return (
-    <div className={styles.slider}>
+    <div className={`${styles.slider} ${isDark ? styles.dark : styles.light}`}>
       <button onClick={scrollLeft} className={styles.arrow}>{`<`}</button>
       {React.cloneElement(children, { ref: sliderRef })}
 
