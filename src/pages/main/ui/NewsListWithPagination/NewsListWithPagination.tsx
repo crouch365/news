@@ -3,7 +3,7 @@ import PaginationWrapper from "@/features/pagination/ui/Pagination/Pagination";
 import { TOTAL_PAGES } from "@/shared/constants/constants";
 import { IFilters } from "@/shared/interfaces";
 import { INews } from "@/entities/news";
-import { usePaginationNews } from "@/pages/utils/hooks/usePaginationNews";
+import { usePaginationNews } from "@/pages/main/utils/hooks/usePaginationNews";
 
 interface Props {
   filters: IFilters;
