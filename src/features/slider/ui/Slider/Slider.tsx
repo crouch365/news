@@ -23,7 +23,7 @@ const Slider = ({ children, step = 150, isDark }: Props) => {
   return (
     <div className={`${styles.slider} ${isDark ? styles.dark : styles.light}`}>
       <button onClick={scrollLeft} className={styles.arrow}>{`<`}</button>
-      {React.cloneElement(children, { ref: sliderRef })}
+      {React.cloneElement(children as any, { ref: sliderRef })}
       <button onClick={scrollRight} className={styles.arrow}>{`>`}</button>
     </div>
   );
